@@ -141,7 +141,7 @@ public class Pixel implements Comparable<Pixel> {
      * @return an int array representing the pixel's components
      */
     public int[] getComponents() {
-        return new int[] { this.r, this.g, this.b }; // Implement this method
+        return new int[] { this.r, this.g, this.b };
     }
 
     /**
@@ -155,7 +155,7 @@ public class Pixel implements Comparable<Pixel> {
      * @return the sum of the differences in each of the color components
      */
     public int distance(Pixel px) {
-        return (px == null) ? 0 : (Math.abs(0) + Math.abs(0) + Math.abs(0)); // Implement this method
+        return (px == null) ? 0 : (Math.abs(this.r - px.r) + Math.abs(this.g - px.g) + Math.abs(this.b - px.b));
     }
 
     /**

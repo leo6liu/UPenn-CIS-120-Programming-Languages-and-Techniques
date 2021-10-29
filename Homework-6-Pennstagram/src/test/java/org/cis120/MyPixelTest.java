@@ -34,6 +34,7 @@ public class MyPixelTest {
         assertEquals(40, p.getRed());
         assertEquals(50, p.getGreen());
         assertEquals(60, p.getBlue());
+        System.out.println("test completed");
     }
 
     @Test
