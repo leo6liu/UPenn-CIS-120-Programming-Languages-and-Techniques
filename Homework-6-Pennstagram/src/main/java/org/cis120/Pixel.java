@@ -155,7 +155,9 @@ public class Pixel implements Comparable<Pixel> {
      * @return the sum of the differences in each of the color components
      */
     public int distance(Pixel px) {
-        return (px == null) ? 0 : (Math.abs(this.r - px.r) + Math.abs(this.g - px.g) + Math.abs(this.b - px.b));
+        return (px == null) ? 0
+                : (Math.abs(this.r - px.getRed()) + Math.abs(this.g - px.getGreen())
+                        + Math.abs(this.b - px.getBlue()));
     }
 
     /**
@@ -171,7 +173,7 @@ public class Pixel implements Comparable<Pixel> {
      * @return a string representation of this pixel
      */
     public String toString() {
-        return null; // Implement this method
+        return "(" + this.r + ", " + this.g + ", " + this.b + ")";
     }
 
     /**
@@ -182,7 +184,8 @@ public class Pixel implements Comparable<Pixel> {
      * @return whether the two pixels contain the same components
      */
     public boolean equals(Pixel px) {
-        return false; // Implement this method
+        return (px != null && this.r == px.getRed() && this.g == px.getGreen()
+                && this.b == px.getBlue()) ? true : false;
     }
 
     /* ---------------- Don't modify below this line ------------------ */
