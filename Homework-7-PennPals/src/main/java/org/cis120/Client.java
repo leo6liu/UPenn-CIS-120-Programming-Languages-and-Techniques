@@ -1,7 +1,7 @@
 package org.cis120;
 
 /**
- * Holds individual client data (ID, nickname, channels?).
+ * Holds individual client data (ID, nickname).
  */
 public class Client {
     private int id;
@@ -18,5 +18,27 @@ public class Client {
 
     public String getNickname() {
         return this.nickname;
+    }
+
+    /**
+     * Clients are equal if they share the same ID.
+     */
+    @Override
+    public boolean equals(Object o) {
+        // If the object is compared with itself, return true
+        if (o == this) {
+            return true;
+        }
+
+        // If o is not an instance of Client, return false
+        if (!(o instanceof Client)) {
+            return false;
+        }
+
+        // typecast o to Client so that we can compare data members
+        Client c = (Client) o;
+
+        // check if clients share the same ID
+        return (this.id == c.getId());
     }
 }

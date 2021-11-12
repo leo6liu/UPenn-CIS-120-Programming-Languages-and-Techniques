@@ -96,7 +96,16 @@ public final class ServerModel {
      * @return The collection of channel names
      */
     public Collection<String> getChannels() {
-        return null;
+        // list to hold collection of registered user nicknames
+        Collection<String> channelNames = new ArrayList<>();
+
+        // iterate over channels, adding all names
+        for (Channel channel : channels) {
+            channelNames.add(channel.getName());
+        }
+
+        // return list of registerd user nicknames
+        return channelNames;
     }
 
     /**
@@ -110,7 +119,15 @@ public final class ServerModel {
      * @return A collection of all user nicknames in the channel
      */
     public Collection<String> getUsersInChannel(String channelName) {
-        return null;
+        // iterate over channels, if channel name is found, return its list of users
+        for (Channel channel : channels) {
+            if (channel.getName().equals(channelName)) {
+                return channel.getUserNicknames();
+            }
+        }
+
+        // if channel was not found, return an empty collection
+        return new ArrayList<>();
     }
 
     /**
@@ -124,6 +141,14 @@ public final class ServerModel {
      *         otherwise, return null
      */
     public String getOwner(String channelName) {
+        // iterate over channels, if channel name is found, return its owner's name
+        for (Channel channel : channels) {
+            if (channel.getName().equals(channelName)) {
+                return channel.getOwner().getNickname();
+            }
+        }
+
+        // if channel was not found, return null
         return null;
     }
 

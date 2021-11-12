@@ -55,4 +55,26 @@ public class Channel {
         // return list of user nicknames
         return userIds;
     }
+
+    /**
+     * Channels are equal if they share the same ID.
+     */
+    @Override
+    public boolean equals(Object o) {
+        // If the object is compared with itself, return true
+        if (o == this) {
+            return true;
+        }
+
+        // If o is not an instance of Channel, return false
+        if (!(o instanceof Channel)) {
+            return false;
+        }
+
+        // typecast o to Channel so that we can compare data members
+        Channel c = (Channel) o;
+
+        // check if channels share the same ID
+        return (this.id == c.getId());
+    }
 }
