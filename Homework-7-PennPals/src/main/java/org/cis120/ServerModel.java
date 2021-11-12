@@ -152,10 +152,6 @@ public final class ServerModel {
         return null;
     }
 
-    // ===============================================
-    // == Task 3: Connections and Setting Nicknames ==
-    // ===============================================
-
     /**
      * This method is automatically called by the backend when a new client connects
      * to the server. It should generate a default nickname with
@@ -169,9 +165,19 @@ public final class ServerModel {
      */
     public Broadcast registerUser(int userId) {
         String nickname = generateUniqueNickname();
-        // We have taken care of generating the nickname and returning
-        // the Broadcast for you. You need to modify this method to
-        // store the new user's ID and username in this model's internal state.
+
+        // store the new user's ID and username in this model's internal state
+        clients.add(new Client(userId, nickname));
+        
+        /*
+        // find a unique ID
+        int id = 0;
+        Collection<Integer> existingUserIds = getRegisteredUserIds();
+        while (existingUserIds.contains(id)) {
+            id++;
+        }
+        */
+
         return Broadcast.connected(nickname);
     }
 
@@ -191,6 +197,24 @@ public final class ServerModel {
             nickname = "User" + suffix++;
         } while (existingUsers.contains(nickname));
         return nickname;
+    }
+
+    /**
+     * Generates a collection of all registered user IDs.
+     * 
+     * @return A collection of all registered user IDs
+     */
+    private Collection<Integer> getRegisteredUserIds() {
+        // list to hold collection of registered user nicknames
+        Collection<Integer> registeredUsersIds = new ArrayList<>();
+
+        // iterate over clients, adding all IDs
+        for (Client client : clients) {
+            registeredUsersIds.add(client.getId());
+        }
+
+        // return list of registerd user IDs
+        return registeredUsersIds;
     }
 
     /**
