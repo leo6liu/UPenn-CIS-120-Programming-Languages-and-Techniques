@@ -3,7 +3,7 @@ package org.cis120;
 /**
  * Holds individual client data (ID, nickname).
  */
-public class Client {
+public class Client implements Comparable<Client> {
     private int id;
     private String nickname;
 
@@ -40,5 +40,16 @@ public class Client {
 
         // check if clients share the same ID
         return (this.id == c.getId());
+    }
+
+    @Override
+    public int compareTo(Client c) {
+        if (this.id > c.getId()) {
+            return 1;
+        } else if (this.id < c.getId()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }

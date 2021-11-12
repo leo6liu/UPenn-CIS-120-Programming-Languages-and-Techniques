@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Holds individual channel data (ID, name, owner, users).
  */
-public class Channel {
+public class Channel implements Comparable<Channel> {
     private int id;
     private String name;
     private Client owner;
@@ -76,5 +76,16 @@ public class Channel {
 
         // check if channels share the same ID
         return (this.id == c.getId());
+    }
+
+    @Override
+    public int compareTo(Channel c) {
+        if (this.id > c.getId()) {
+            return 1;
+        } else if (this.id < c.getId()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
